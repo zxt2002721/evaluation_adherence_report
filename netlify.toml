@@ -5,3 +5,8 @@
 [dev]
   functions = "netlify/functions"
   framework = "#static"
+
+# Netlify Blobs 配置
+# 确保在生产环境中启用 Blobs 存储
+[[plugins]]
+  package = "@netlify/blobs"

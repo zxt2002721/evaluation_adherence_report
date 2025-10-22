@@ -18,17 +18,33 @@ export const handler = async (event) => {
   try {
     const { getStore } = await import('@netlify/blobs');
     const storeName = process.env.NETLIFY_BLOBS_STORE || 'questionnaires';
-    const siteId = process.env.NETLIFY_BLOBS_SITE_ID || process.env.NETLIFY_SITE_ID || process.env.SITE_ID;
-    const token = process.env.NETLIFY_BLOBS_TOKEN || process.env.NETLIFY_AUTH_TOKEN;
+    
+    // 尝试多种环境变量来获取配置
+    const siteId = process.env.NETLIFY_BLOBS_SITE_ID 
+      || process.env.NETLIFY_SITE_ID 
+      || process.env.SITE_ID
+      || event.headers['x-nf-site-id']; // Netlify 自动提供的 header
+    
+    const token = process.env.NETLIFY_BLOBS_TOKEN 
+      || process.env.NETLIFY_AUTH_TOKEN
+      || process.env.NETLIFY_TOKEN;
+    
     const endpoint = process.env.NETLIFY_BLOBS_ENDPOINT;
 
+    // 构建选项
     const options = { name: storeName };
+    
+    // 如果有 siteId 和 token，则手动配置
     if (siteId && token) {
-      options.siteId = siteId;
+      options.siteID = siteId; // 注意：属性名是 siteID（大写 ID）
       options.token = token;
       if (endpoint) {
         options.endpoint = endpoint;
       }
+      console.log('Using manual Blobs configuration with siteID:', siteId.substring(0, 8) + '...');
+    } else {
+      // 否则依赖 Netlify 自动注入的环境配置
+      console.log('Using automatic Netlify Blobs configuration');
     }
 
     const store = getStore(options);
