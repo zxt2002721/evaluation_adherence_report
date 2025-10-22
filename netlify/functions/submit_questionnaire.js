@@ -1,3 +1,8 @@
+/**
+ * 上传问卷数据到 GitHub 仓库
+ * 使用 GitHub API 将数据存储为 JSON 文件
+ */
+
 export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -16,73 +21,75 @@ export const handler = async (event) => {
   }
 
   try {
-    const { getStore } = await import('@netlify/blobs');
-    const storeName = process.env.NETLIFY_BLOBS_STORE || 'questionnaires';
-    
-    // 尝试多种环境变量来获取配置
-    const siteId = process.env.NETLIFY_BLOBS_SITE_ID 
-      || process.env.NETLIFY_SITE_ID 
-      || process.env.SITE_ID
-      || event.headers['x-nf-site-id']; // Netlify 自动提供的 header
-    
-    const token = process.env.NETLIFY_BLOBS_TOKEN 
-      || process.env.NETLIFY_AUTH_TOKEN
-      || process.env.NETLIFY_TOKEN;
-    
-    const endpoint = process.env.NETLIFY_BLOBS_ENDPOINT;
+    const githubToken = process.env.GITHUB_TOKEN;
+    const githubOwner = process.env.GITHUB_OWNER || 'zxt2002721';
+    const githubRepo = process.env.GITHUB_REPO || 'evaluation_adherence_report';
+    const githubBranch = process.env.GITHUB_BRANCH || 'main';
+    const storagePath = process.env.GITHUB_STORAGE_PATH || 'questionnaire_data';
 
-    // 构建选项
-    const options = { name: storeName };
-    
-    // 如果有 siteId 和 token，则手动配置
-    if (siteId && token) {
-      options.siteID = siteId; // 注意：属性名是 siteID（大写 ID）
-      options.token = token;
-      if (endpoint) {
-        options.endpoint = endpoint;
-      }
-      console.log('Using manual Blobs configuration with siteID:', siteId.substring(0, 8) + '...');
-    } else {
-      // 否则依赖 Netlify 自动注入的环境配置
-      console.log('Using automatic Netlify Blobs configuration');
+    if (!githubToken) {
+      throw new Error('GITHUB_TOKEN environment variable is required');
     }
-
-    const store = getStore(options);
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    let key;
+    let filename, content;
 
     if (Array.isArray(records) && records.length) {
-      key = `bundle_${timestamp}.json`;
-      await store.set(
-        key,
-        JSON.stringify({
-          uploaded_at: new Date().toISOString(),
-          count: records.length,
-          records,
-        })
-      );
+      filename = `${storagePath}/bundle_${timestamp}.json`;
+      content = JSON.stringify({
+        uploaded_at: new Date().toISOString(),
+        count: records.length,
+        records,
+      }, null, 2);
     } else {
-      key = `${timestamp}_${formData.task_id || 'unknown'}.json`;
-      await store.set(
-        key,
-        JSON.stringify(formData),
-        {
-          metadata: {
-            task_id: formData.task_id || '',
-            task_level: formData.task_level || '',
-            part: formData.part || '',
-          },
-        }
-      );
+      filename = `${storagePath}/${timestamp}_${formData.task_id || 'unknown'}.json`;
+      content = JSON.stringify({
+        ...formData,
+        uploaded_at: new Date().toISOString(),
+      }, null, 2);
     }
 
+    const apiUrl = `https://api.github.com/repos/${githubOwner}/${githubRepo}/contents/${filename}`;
+    console.log(`Uploading to GitHub: ${filename}`);
+
+    const response = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${githubToken}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+        'User-Agent': 'Netlify-Function'
+      },
+      body: JSON.stringify({
+        message: `Add questionnaire data: ${filename}`,
+        content: Buffer.from(content).toString('base64'),
+        branch: githubBranch,
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.text();
+      throw new Error(`GitHub API error: ${response.status} - ${errorData}`);
+    }
+
+    const result = await response.json();
+    
     return {
       statusCode: 200,
-      body: JSON.stringify({ key, store: storeName }),
+      body: JSON.stringify({ 
+        success: true,
+        filename,
+        url: result.content.html_url,
+        sha: result.content.sha
+      }),
     };
   } catch (err) {
     console.error('submit_questionnaire error:', err);
-    return { statusCode: 500, body: err instanceof Error ? err.message : 'Upload failed' };
+    return { 
+      statusCode: 500, 
+      body: JSON.stringify({
+        error: err instanceof Error ? err.message : 'Upload failed'
+      })
+    };
   }
 };

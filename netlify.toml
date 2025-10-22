@@ -6,7 +6,9 @@
   functions = "netlify/functions"
   framework = "#static"
 
-# Netlify Blobs 配置
-# 确保在生产环境中启用 Blobs 存储
-[[plugins]]
-  package = "@netlify/blobs"
+# 环境变量说明（需在 Netlify 控制台配置）:
+# GITHUB_TOKEN - GitHub Personal Access Token (必需)
+# GITHUB_OWNER - GitHub 用户名 (默认: zxt2002721)
+# GITHUB_REPO - 仓库名称 (默认: evaluation_adherence_report)
+# GITHUB_BRANCH - 分支名称 (默认: main)
+# GITHUB_STORAGE_PATH - 存储路径 (默认: questionnaire_data)

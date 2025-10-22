@@ -2,8 +2,7 @@
   "name": "evaluation-app",
   "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "@netlify/blobs": "^4.0.0"
-  }
+  "description": "Evaluation adherence report with GitHub storage",
+  "dependencies": {}
 }
 
