@@ -18,7 +18,20 @@ export const handler = async (event) => {
   try {
     const { getStore } = await import('@netlify/blobs');
     const storeName = process.env.NETLIFY_BLOBS_STORE || 'questionnaires';
-    const store = getStore({ name: storeName });
+    const siteId = process.env.NETLIFY_BLOBS_SITE_ID || process.env.NETLIFY_SITE_ID || process.env.SITE_ID;
+    const token = process.env.NETLIFY_BLOBS_TOKEN || process.env.NETLIFY_AUTH_TOKEN;
+    const endpoint = process.env.NETLIFY_BLOBS_ENDPOINT;
+
+    const options = { name: storeName };
+    if (siteId && token) {
+      options.siteId = siteId;
+      options.token = token;
+      if (endpoint) {
+        options.endpoint = endpoint;
+      }
+    }
+
+    const store = getStore(options);
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     let key;
@@ -54,6 +67,6 @@ export const handler = async (event) => {
     };
   } catch (err) {
     console.error('submit_questionnaire error:', err);
-    return { statusCode: 500, body: 'Upload failed' };
+    return { statusCode: 500, body: err instanceof Error ? err.message : 'Upload failed' };
   }
 };
