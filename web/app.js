@@ -137,6 +137,38 @@ async function main(){
     });
   }
 
+  const exportBtn = $('#exportJson');
+  if(exportBtn){
+    exportBtn.addEventListener('click',()=>{
+      const records = Storage.list();
+      if(!records.length){
+        alert('暂无本地问卷数据可导出');
+        return;
+      }
+
+      // 创建 JSON 文件内容
+      const exportData = {
+        exported_at: new Date().toISOString(),
+        count: records.length,
+        records: records
+      };
+      const jsonStr = JSON.stringify(exportData, null, 2);
+      
+      // 创建下载链接
+      const blob = new Blob([jsonStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `questionnaires_${new Date().toISOString().replace(/[:.]/g, '-')}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      setUploadStatus(`已导出 ${records.length} 份问卷`, 'success');
+    });
+  }
+
   $('#clearAll').addEventListener('click',()=>{
     if(confirm('确认清空所有本地问卷记录？')){
       Storage.clear();

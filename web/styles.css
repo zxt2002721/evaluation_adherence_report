@@ -99,3 +99,6 @@ button.primary:hover{filter:brightness(1.05);}
 .status-text{font-size:13px;color:var(--muted);}
 .status-text.success{color:#047857;}
 .status-text.error{color:#b91c1c;}
+
+#exportJson{background:linear-gradient(90deg,#059669,#10b981);box-shadow:0 10px 20px rgba(5,150,105,.22);}
+#exportJson:hover{box-shadow:0 14px 22px rgba(5,150,105,.28);}
