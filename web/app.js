@@ -178,6 +178,21 @@ async function main(){
 
   renderList(seg.parts[currentPart()-1]||[]);
   evaluateUploadStatus();
+
+  // 操作指南交互
+  const guideDetails = document.querySelector('.guide-details');
+  const guideSummary = document.querySelector('.guide-summary');
+  const guideHint = document.querySelector('.guide-hint');
+  
+  if(guideDetails && guideHint){
+    guideDetails.addEventListener('toggle', ()=>{
+      if(guideDetails.open){
+        guideHint.textContent = '点击收起 ▲';
+      } else {
+        guideHint.textContent = '点击查看详细步骤 ▼';
+      }
+    });
+  }
 }
 
 window.addEventListener('DOMContentLoaded',()=>{
