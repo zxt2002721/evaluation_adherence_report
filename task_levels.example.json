@@ -1,0 +1,30 @@
+{
+  "patient_urgent_03e7ddaefc5e": "紧急级",
+  "patient_urgent_3e2ef9ca5c43": "紧急级",
+  "patient_urgent_4acb87a0dfc5": "紧急级",
+  "patient_urgent_4c58c210fa29": "紧急级",
+  "patient_urgent_585609661945": "紧急级",
+  "patient_urgent_635f9577f877": "紧急级",
+  "patient_urgent_88d8395cbd56": "紧急级",
+  "patient_urgent_944128ea5ff3": "紧急级",
+  "patient_urgent_9d63f51e7b6c": "紧急级",
+  "patient_urgent_b5be81070cb7": "紧急级",
+  "patient_urgent_b93317bae025": "紧急级",
+  "patient_urgent_f28a88766f78": "紧急级",
+  
+  "patient_regular_0a028fdbc257": "关注级",
+  "patient_regular_4acb87a0dfc5": "关注级",
+  "patient_regular_6220a921080b": "关注级",
+  "patient_regular_635f9577f877": "关注级",
+  "patient_regular_9304e32fed67": "关注级",
+  "patient_regular_944128ea5ff3": "关注级",
+  "patient_regular_9bac1e59058b": "关注级",
+  "patient_regular_b2f1ac46bbfe": "关注级",
+  "patient_regular_db22eaf9c510": "关注级",
+  
+  "patient_regular_eab379a1a95b": "稳定级",
+  "patient_regular_ec3608156d21": "稳定级",
+  
+  "patient_regular_fbde49750c9c": "关注级"
+}
+

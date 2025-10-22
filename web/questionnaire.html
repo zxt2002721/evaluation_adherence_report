@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>问卷填写</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="storage.js"></script>
+  <script defer src="questionnaire.js"></script>
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <h1>医生端自动生成报告质评问卷</h1>
+      <p>请依据当前报告完成 1-10 分打分与单选项，完成度会实时更新。</p>
+    </header>
+
+    <section class="card">
+      <div id="taskMeta" class="info-banner"></div>
+      <div class="progress" aria-label="完成度">
+        <div class="bar" id="progressBar"></div>
+      </div>
+      <div class="progress-label" id="progressText">已完成 0/15</div>
+
+      <form id="form">
+        <fieldset>
+          <legend>基本信息</legend>
+          <div class="grid-2">
+            <label>医生编号
+              <input name="doctor_id" placeholder="请输入医生编号" required />
+            </label>
+            <label>患者/病例编号
+              <input name="patient_case_id" placeholder="请输入患者/病例编号" required />
+            </label>
+          </div>
+        </fieldset>
+
+    <fieldset>
+      <legend>一、核心医疗判断（1-10 分，5 = 平时水平）</legend>
+      <div>
+        <div class="question-text">1. 紧迫度评估准确性（红/黄/绿分级是否反映真实紧急程度）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q1">
+          <label class="radio-pill"><input type="radio" name="q1" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q1" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">2. 医生介入建议（“需要医生介入”标记、随访间隔等是否恰当）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q2">
+          <label class="radio-pill"><input type="radio" name="q2" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q2" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">3. 重点任务识别（“重点遵从任务”及其状态是否抓住主要风险）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q3">
+          <label class="radio-pill"><input type="radio" name="q3" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q3" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">4. 临床建议的适宜性（针对药物、监测、生活方式的建议是否合适）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q4">
+          <label class="radio-pill"><input type="radio" name="q4" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q4" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">5. 风险理由说明（“判断理由”“关键关注点”是否充分、可追溯）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q5">
+          <label class="radio-pill"><input type="radio" name="q5" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q5" value="10"><span>10</span></label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>二、数据与事实核对（1-10 分，5 = 平时水平）</legend>
+      <div>
+        <div class="question-text">6. 数据完整性（关键信息缺失项是否被明确标识和提示）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q6">
+          <label class="radio-pill"><input type="radio" name="q6" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q6" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">7. 图表信息价值（趋势图、对比图等是否有助于快速判断患者状态）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q7">
+          <label class="radio-pill"><input type="radio" name="q7" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q7" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">8. 依从性描述（用药、监测、任务执行的描述是否符合事实）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q8">
+          <label class="radio-pill"><input type="radio" name="q8" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q8" value="10"><span>10</span></label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>三、可操作性与工作流（1-10 分，5 = 平时水平）</legend>
+      <div>
+        <div class="question-text">9. 接诊准备度（看完报告后，是否能迅速制定接诊计划）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q9">
+          <label class="radio-pill"><input type="radio" name="q9" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q9" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">10. 编辑工作量（整体修改量相较手工撰写的节省程度）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q10">
+          <label class="radio-pill"><input type="radio" name="q10" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q10" value="10"><span>10</span></label>
+        </div>
+
+        <div class="question-text">11. 信息定位效率（找到关键风险/任务/指标所需的时间）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q11">
+          <label class="radio-pill"><input type="radio" name="q11" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q11" value="10"><span>10</span></label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>四、总体评价（1-10 分，5 = 平时水平）</legend>
+      <div>
+        <div class="question-text">12. 综合满意度（作为接诊医生，整体满意程度）</div>
+        <div class="radio-group" role="radiogroup" aria-label="q12">
+          <label class="radio-pill"><input type="radio" name="q12" value="1"><span>1</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="2"><span>2</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="3"><span>3</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="4"><span>4</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="5"><span>5</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="6"><span>6</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="7"><span>7</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="8"><span>8</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="9"><span>9</span></label>
+          <label class="radio-pill"><input type="radio" name="q12" value="10"><span>10</span></label>
+        </div>
+      </div>
+    </fieldset>
+
+        <fieldset>
+          <legend>五、编辑记录与安全（单项选择题）</legend>
+          <div class="question-text">13. 本次修改量评估</div>
+          <div class="radio-group" role="radiogroup" aria-label="q13">
+            <label class="radio-pill"><input type="radio" name="q13" value="未修改"><span>[ ] 未修改</span></label>
+            <label class="radio-pill"><input type="radio" name="q13" value="<10%"><span>[ ] &lt;10%</span></label>
+            <label class="radio-pill"><input type="radio" name="q13" value="10-30%"><span>[ ] 10-30%</span></label>
+            <label class="radio-pill"><input type="radio" name="q13" value=">30%"><span>[ ] &gt;30%</span></label>
+          </div>
+
+          <div class="question-text">14. 主要调整环节（单选，若多个请选最主要一项）</div>
+          <div class="radio-group" role="radiogroup" aria-label="q14">
+            <label class="radio-pill"><input type="radio" name="q14" value="基本信息"><span>[ ] 基本信息</span></label>
+            <label class="radio-pill"><input type="radio" name="q14" value="监测/图表"><span>[ ] 监测/图表</span></label>
+            <label class="radio-pill"><input type="radio" name="q14" value="重点任务"><span>[ ] 重点任务</span></label>
+            <label class="radio-pill"><input type="radio" name="q14" value="AI 摘要与建议"><span>[ ] AI 摘要与建议</span></label>
+            <label class="radio-pill"><input type="radio" name="q14" value="其他模块"><span>[ ] 其他模块</span></label>
+          </div>
+
+          <div class="question-text">15. 是否发现安全相关错误</div>
+          <div class="radio-group" role="radiogroup" aria-label="q15">
+            <label class="radio-pill"><input type="radio" name="q15" value="否"><span>[ ] 否</span></label>
+            <label class="radio-pill"><input type="radio" name="q15" value="轻微问题（已修正）"><span>[ ] 轻微问题（已修正）</span></label>
+            <label class="radio-pill"><input type="radio" name="q15" value="重大问题（影响决策）"><span>[ ] 重大问题（影响决策）</span></label>
+          </div>
+          <label>备注
+            <textarea name="notes" rows="3" placeholder="可留空"></textarea>
+          </label>
+        </fieldset>
+
+        <input type="hidden" name="task_id" />
+        <input type="hidden" name="task_type" />
+        <input type="hidden" name="task_path" />
+        <input type="hidden" name="part" />
+        <input type="hidden" name="task_level" />
+        <input type="hidden" name="task_risk_label" />
+
+        <div class="sticky-actions">
+          <div class="actions">
+            <button type="submit" class="primary" id="saveBtn">保存本次问卷</button>
+            <a id="backLink" class="button secondary-outline" href="index.html">返回任务列表</a>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <footer style="text-align:center;color:var(--muted);margin-top:28px;font-size:13px;">
+      所有问卷数据仅存于浏览器本地，可随时导出或清空。
+    </footer>
+  </main>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite">已保存</div>
+</body>
+</html>

@@ -1,0 +1,222 @@
+{
+  "generated_at": "2025-10-21T20:06:17",
+  "task_count": 24,
+  "tasks": [
+    {
+      "id": "patient_regular_0a028fdbc257",
+      "label": "patient_regular_0a028fdbc257",
+      "type": "regular",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_regular_0a028fdbc257/compliance_20251021_160851/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_4acb87a0dfc5",
+      "label": "patient_regular_4acb87a0dfc5",
+      "type": "regular",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_regular_4acb87a0dfc5/compliance_20251021_160916/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_6220a921080b",
+      "label": "patient_regular_6220a921080b",
+      "type": "regular",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_regular_6220a921080b/compliance_20251021_160938/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_635f9577f877",
+      "label": "patient_regular_635f9577f877",
+      "type": "regular",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_regular_635f9577f877/compliance_20251021_161001/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_9304e32fed67",
+      "label": "patient_regular_9304e32fed67",
+      "type": "regular",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_regular_9304e32fed67/compliance_20251021_161027/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_944128ea5ff3",
+      "label": "patient_regular_944128ea5ff3",
+      "type": "regular",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_regular_944128ea5ff3/compliance_20251021_161050/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_9bac1e59058b",
+      "label": "patient_regular_9bac1e59058b",
+      "type": "regular",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "低风险",
+      "path": "patient_regular_9bac1e59058b/compliance_20251021_193532/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_b2f1ac46bbfe",
+      "label": "patient_regular_b2f1ac46bbfe",
+      "type": "regular",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_regular_b2f1ac46bbfe/compliance_20251021_161136/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_db22eaf9c510",
+      "label": "patient_regular_db22eaf9c510",
+      "type": "regular",
+      "level": "稳定级",
+      "risk_score": null,
+      "risk_label": "低风险",
+      "path": "patient_regular_db22eaf9c510/compliance_20251021_193509/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_eab379a1a95b",
+      "label": "patient_regular_eab379a1a95b",
+      "type": "regular",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_regular_eab379a1a95b/compliance_20251021_161228/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_ec3608156d21",
+      "label": "patient_regular_ec3608156d21",
+      "type": "regular",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_regular_ec3608156d21/compliance_20251021_161253/doctor_report.html"
+    },
+    {
+      "id": "patient_regular_fbde49750c9c",
+      "label": "patient_regular_fbde49750c9c",
+      "type": "regular",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_regular_fbde49750c9c/compliance_20251021_161314/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_03e7ddaefc5e",
+      "label": "patient_urgent_03e7ddaefc5e",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "低风险",
+      "path": "patient_urgent_03e7ddaefc5e/compliance_20251021_193447/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_3e2ef9ca5c43",
+      "label": "patient_urgent_3e2ef9ca5c43",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_urgent_3e2ef9ca5c43/compliance_20251021_161400/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_4acb87a0dfc5",
+      "label": "patient_urgent_4acb87a0dfc5",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_urgent_4acb87a0dfc5/compliance_20251021_161423/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_4c58c210fa29",
+      "label": "patient_urgent_4c58c210fa29",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_urgent_4c58c210fa29/compliance_20251021_161446/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_585609661945",
+      "label": "patient_urgent_585609661945",
+      "type": "urgent",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_urgent_585609661945/compliance_20251021_161509/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_635f9577f877",
+      "label": "patient_urgent_635f9577f877",
+      "type": "urgent",
+      "level": "关注级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_urgent_635f9577f877/compliance_20251021_161532/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_88d8395cbd56",
+      "label": "patient_urgent_88d8395cbd56",
+      "type": "urgent",
+      "level": "稳定级",
+      "risk_score": null,
+      "risk_label": "低风险",
+      "path": "patient_urgent_88d8395cbd56/compliance_20251021_193426/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_944128ea5ff3",
+      "label": "patient_urgent_944128ea5ff3",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_urgent_944128ea5ff3/compliance_20251021_161616/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_9d63f51e7b6c",
+      "label": "patient_urgent_9d63f51e7b6c",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_urgent_9d63f51e7b6c/compliance_20251021_161641/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_b5be81070cb7",
+      "label": "patient_urgent_b5be81070cb7",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_urgent_b5be81070cb7/compliance_20251021_161704/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_b93317bae025",
+      "label": "patient_urgent_b93317bae025",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "高风险",
+      "path": "patient_urgent_b93317bae025/compliance_20251021_161727/doctor_report.html"
+    },
+    {
+      "id": "patient_urgent_f28a88766f78",
+      "label": "patient_urgent_f28a88766f78",
+      "type": "urgent",
+      "level": "紧急级",
+      "risk_score": null,
+      "risk_label": "中风险",
+      "path": "patient_urgent_f28a88766f78/compliance_20251021_161753/doctor_report.html"
+    }
+  ]
+}

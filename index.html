@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>医生报告评估任务入口</title>
+  <link rel="stylesheet" href="web/styles.css" />
+  <script defer src="web/app.js"></script>
+  <script defer src="web/segment.js"></script>
+  <script defer src="web/storage.js"></script>
+  <script defer src="web/export.js"></script>
+  <style>
+    /* small inline safety in case styles.css not loaded */
+    .hidden{display:none}
+  </style>
+  <noscript>需要启用 JavaScript 才能使用该页面。</noscript>
+</head>
+<body>
+  <main>
+    <header class="page-header">
+      <h1>医生侧评估任务面板</h1>
+      <p>共 <span id="totalCount">0</span> 个任务，已按照分级比例划分为 3 组。</p>
+    </header>
+
+    <section class="card">
+      <div class="controls">
+        <div>
+          <label for="partSelect">选择任务分组：</label>
+          <select id="partSelect">
+            <option value="1">第 1 组</option>
+            <option value="2">第 2 组</option>
+            <option value="3">第 3 组</option>
+          </select>
+        </div>
+        <button id="reloadSeg">重新分配三等分比例</button>
+      </div>
+      <div class="stats">
+        <span id="typeStats">分布：-</span>
+        <span id="partStats">分组：-</span>
+      </div>
+      <div class="controls extra-controls">
+        <button id="uploadAll">上传问卷到云端</button>
+        <button id="clearAll">清空本地保存</button>
+        <span id="uploadStatus" class="status-text">未上传</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-top:0;">当前分组任务</h2>
+      <ol id="taskList"></ol>
+    </section>
+
+    <footer style="text-align:center;color:var(--muted);margin-top:28px;font-size:13px;">
+      打开“报告”后回到此页填写问卷，所有问卷草稿会保存于本地；点击“上传”可同步到 Netlify。
+    </footer>
+  </main>
+</body>
+<!--
+  For best results, open via a local HTTP server to avoid file:// CORS.
+  Example: use VS Code Live Server or `python -m http.server`.
+-->
+</html>
