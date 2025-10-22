@@ -16,30 +16,36 @@ export const handler = async (event) => {
   }
 
   try {
-    const { createClient } = await import('@netlify/blobs');
-    const client = createClient();
+    const { getStore } = await import('@netlify/blobs');
     const storeName = process.env.NETLIFY_BLOBS_STORE || 'questionnaires';
-    const store = client.store(storeName);
+    const store = getStore({ name: storeName });
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
     let key;
 
     if (Array.isArray(records) && records.length) {
       key = `bundle_${timestamp}.json`;
-      await store.setJSON(key, {
-        uploaded_at: new Date().toISOString(),
-        count: records.length,
-        records,
-      });
+      await store.set(
+        key,
+        JSON.stringify({
+          uploaded_at: new Date().toISOString(),
+          count: records.length,
+          records,
+        })
+      );
     } else {
       key = `${timestamp}_${formData.task_id || 'unknown'}.json`;
-      await store.setJSON(key, formData, {
-        metadata: {
-          task_id: formData.task_id || '',
-          task_level: formData.task_level || '',
-          part: formData.part || '',
-        },
-      });
+      await store.set(
+        key,
+        JSON.stringify(formData),
+        {
+          metadata: {
+            task_id: formData.task_id || '',
+            task_level: formData.task_level || '',
+            part: formData.part || '',
+          },
+        }
+      );
     }
 
     return {
