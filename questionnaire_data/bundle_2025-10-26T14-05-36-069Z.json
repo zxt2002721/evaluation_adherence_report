@@ -1,0 +1,33 @@
+{
+  "uploaded_at": "2025-10-26T14:05:36.072Z",
+  "count": 1,
+  "records": [
+    {
+      "doctor_id": "程",
+      "patient_case_id": "1",
+      "q1": "6",
+      "q2": "4",
+      "q3": "5",
+      "q4": "4",
+      "q5": "5",
+      "q6": "4",
+      "q7": "5",
+      "q8": "5",
+      "q9": "4",
+      "q10": "5",
+      "q11": "5",
+      "q12": "5",
+      "q13": "未修改",
+      "q14": "基本信息",
+      "q15": "否",
+      "notes": "患者患有HIV，应特殊提示生活方式，进行健康教育。用药过程有重复，且疾病与药物之间没有对应，HIV病情可控没有详细展示，是用过阻断药还是有过其他的处理？",
+      "task_id": "patient_urgent_9d63f51e7b6c",
+      "task_type": "urgent",
+      "task_path": "patient_urgent_9d63f51e7b6c/compliance_20251021_161641/doctor_report.html",
+      "part": "3",
+      "task_level": "紧急级",
+      "task_risk_label": "高风险",
+      "saved_at": "2025-10-26T14:05:16.687Z"
+    }
+  ]
+}
