@@ -1,0 +1,33 @@
+{
+  "uploaded_at": "2025-10-26T13:50:11.203Z",
+  "count": 1,
+  "records": [
+    {
+      "doctor_id": "蒋",
+      "patient_case_id": "1",
+      "q1": "4",
+      "q2": "5",
+      "q3": "5",
+      "q4": "5",
+      "q5": "5",
+      "q6": "5",
+      "q7": "4",
+      "q8": "5",
+      "q9": "4",
+      "q10": "4",
+      "q11": "4",
+      "q12": "5",
+      "q13": "10-30%",
+      "q14": "监测/图表",
+      "q15": "否",
+      "notes": "",
+      "task_id": "patient_regular_6220a921080b",
+      "task_type": "regular",
+      "task_path": "patient_regular_6220a921080b/compliance_20251021_160938/doctor_report.html",
+      "part": "1",
+      "task_level": "紧急级",
+      "task_risk_label": "中风险",
+      "saved_at": "2025-10-26T13:49:42.622Z"
+    }
+  ]
+}
